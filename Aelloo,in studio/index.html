@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A0A1A" />
+  <meta name="description" content="Aelloo — a premium design studio crafting cinematic, conversion-focused digital experiences for ambitious brands." />
+  <title>Aelloo — Cinematic Web Design Studio</title>
+
+  <!-- Preconnect to font + 3D CDNs for faster first paint -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Display serif + body sans — load async so they never block render -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter:wght@300;400;500;600;700&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" />
+  </noscript>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- =========================================================
+       PERSISTENT NATURE-JOURNEY SCENE
+       One full-page fixed canvas behind every section. Scroll
+       position drives the whole journey: mountain valley at the
+       top, descending through the water's surface, into an
+       underwater world, down to the ocean floor at the footer.
+       All hand-drawn in Canvas 2D — no images, nothing to fail.
+       ========================================================= -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Soft tinted vignette to anchor text readability across sections -->
+  <div class="page-vignette" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       CUSTOM CURSOR (desktop only — JS removes on touch)
+       ========================================================= -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- =========================================================
+       NAV
+       ========================================================= -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" data-magnetic>
+      <span class="nav__brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="url(#bg)" stroke-width="1.5"/>
+          <path d="M9 22 Q16 6 23 22" stroke="url(#bg)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32">
+              <stop offset="0" stop-color="#6C3CE1"/>
+              <stop offset=".5" stop-color="#FF6B6B"/>
+              <stop offset="1" stop-color="#FFD93D"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="nav__brand-text">Aelloo<span class="nav__brand-dot">.</span>in</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#difference">Difference</a>
+      <a href="#showreel">Showreel</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a href="#contact" class="nav__cta" data-magnetic>
+      <span>Start a project</span>
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <button class="nav__menu" id="nav-menu" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <main id="top">
+    <section class="hero" id="hero">
+      <!-- Three.js mounts here. If it fails, hero still looks cinematic
+           via the persistent ambient canvas underneath. -->
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <span class="hero__eyebrow reveal">
+          <span class="hero__eyebrow-dot"></span>
+          Aelloo Studio · Est. 2025
+        </span>
+
+        <h1 class="hero__title">
+          <span class="reveal-line"><span>We design websites</span></span>
+          <span class="reveal-line"><span>that feel <em>inevitable.</em></span></span>
+        </h1>
+
+        <p class="hero__sub reveal">
+          A premium design studio crafting cinematic, conversion-focused digital
+          experiences for ambitious brands — from first impression to final pixel.
+        </p>
+
+        <div class="hero__cta reveal">
+          <a href="#contact" class="btn btn--primary" data-magnetic>
+            <span>Start a project</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#showreel" class="btn btn--ghost" data-magnetic>
+            <span class="btn__play">
+              <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                <path d="M3 2v8l7-4z"/>
+              </svg>
+            </span>
+            <span>Watch showreel</span>
+          </a>
+        </div>
+
+        <div class="hero__meta reveal">
+          <span class="hero__meta-item">Cinematic craft</span>
+          <span class="hero__meta-divider"></span>
+          <span class="hero__meta-item">Conversion-obsessed</span>
+          <span class="hero__meta-divider"></span>
+          <span class="hero__meta-item">Built to scale</span>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         STATS BAR (counters)
+         ========================================================= -->
+    <section class="stats" aria-label="Studio metrics">
+      <div class="stats__inner">
+        <div class="stat" data-reveal>
+          <div class="stat__num" data-count="10" data-suffix="+">0</div>
+          <div class="stat__label">Websites launched</div>
+        </div>
+        <div class="stat" data-reveal>
+          <div class="stat__num" data-count="-" data-suffix="">-</div>
+          <div class="stat__label">Awards &amp; features</div>
+        </div>
+        <div class="stat" data-reveal>
+          <div class="stat__num" data-count="99" data-suffix="%">0</div>
+          <div class="stat__label">Client retention</div>
+        </div>
+        <div class="stat" data-reveal>
+          <div class="stat__num" data-count="4" data-suffix=" yrs">0</div>
+          <div class="stat__label">Of practice</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         DIFFERENCE — pillar cards
+         ========================================================= -->
+    <section class="section section--difference" id="difference">
+      <div class="section__head">
+        <span class="eyebrow" data-reveal>The Aelloo difference</span>
+        <h2 class="section__title" data-reveal>
+          We don't make <em> - pretty - </em> websites.<br/>
+          We make websites that <em> - work. - </em>
+        </h2>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar" data-reveal data-tilt>
+          <div class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="11" stroke="url(#g1)" stroke-width="1.4"/>
+              <path d="M16 5v22M5 16h22" stroke="url(#g1)" stroke-width="1.4"/>
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="32" y2="32">
+                  <stop offset="0" stop-color="#6C3CE1"/>
+                  <stop offset="1" stop-color="#00D2FF"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="pillar__title">Strategy-led, not trend-led</h3>
+          <p class="pillar__body">
+            Every design decision is anchored to a business outcome. We start with
+            positioning, audience, and metrics — then build the cinematic layer on top.
+          </p>
+          <span class="pillar__num">01</span>
+        </article>
+
+        <article class="pillar" data-reveal data-tilt>
+          <div class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M6 26 L13 19 L18 23 L26 11" stroke="url(#g2)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="26" cy="11" r="2" fill="url(#g2)"/>
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="32" y2="32">
+                  <stop offset="0" stop-color="#FF6B6B"/>
+                  <stop offset="1" stop-color="#FFD93D"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="pillar__title">Conversion-obsessed</h3>
+          <p class="pillar__body">
+            Beautiful sites that don't convert are just art projects. We obsess over
+            scroll depth, CTA placement, page speed, and the small friction points
+            that quietly kill revenue.
+          </p>
+          <span class="pillar__num">02</span>
+        </article>
+
+        <article class="pillar" data-reveal data-tilt>
+          <div class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M4 18 Q9 8 16 14 T28 12" stroke="url(#g3)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M4 23 Q9 13 16 19 T28 17" stroke="url(#g3)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".55"/>
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="32" y2="32">
+                  <stop offset="0" stop-color="#00D2FF"/>
+                  <stop offset="1" stop-color="#6C3CE1"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="pillar__title">Cinematic craft</h3>
+          <p class="pillar__body">
+            Micro-interactions, motion choreography, considered typography — the
+            things that turn a website into a brand experience people remember and
+            share.
+          </p>
+          <span class="pillar__num">03</span>
+        </article>
+
+        <article class="pillar" data-reveal data-tilt>
+          <div class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect x="6" y="6" width="9" height="9" rx="1.5" stroke="url(#g4)" stroke-width="1.4"/>
+              <rect x="17" y="6" width="9" height="9" rx="1.5" stroke="url(#g4)" stroke-width="1.4" opacity=".7"/>
+              <rect x="6" y="17" width="9" height="9" rx="1.5" stroke="url(#g4)" stroke-width="1.4" opacity=".55"/>
+              <rect x="17" y="17" width="9" height="9" rx="1.5" stroke="url(#g4)" stroke-width="1.4" opacity=".85"/>
+              <defs>
+                <linearGradient id="g4" x1="0" y1="0" x2="32" y2="32">
+                  <stop offset="0" stop-color="#FFD93D"/>
+                  <stop offset="1" stop-color="#FF6B6B"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="pillar__title">Built to scale</h3>
+          <p class="pillar__body">
+            Clean component systems, documented handoffs, and performance budgets
+            baked in from day one — so the site that wins awards today still
+            converts in three years.
+          </p>
+          <span class="pillar__num">04</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SHOWREEL (NEW – REPLACED WITH CARD CAROUSEL)
+         ========================================================= -->
+    <section class="section section--showreel" id="showreel">
+      <div class="section__head">
+        <span class="eyebrow" data-reveal>2025 Showreel</span>
+        <h2 class="section__title" data-reveal>
+          Every pixel. Every detail.<br/>
+          <em> - Every project we've obsessed over. - </em>
+        </h2>
+      </div>
+
+      <div class="reel-carousel" data-reveal>
+        <div class="reel-track">
+          <!-- First set of cards (6 projects) -->
+          <div class="reel-cards">
+            <!-- Bloom Bakery -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 34 C22 14, 40 18, 40 34 C34 28, 22 26, 14 34" />
+                    <path d="M24 18 L24 10 M18 14 L24 10 L30 14" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Bloom Bakery</h4>
+                <p class="card-tagline">Artisan Rebrand</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 34 C22 14, 40 18, 40 34 C34 28, 22 26, 14 34" />
+                    <path d="M24 18 L24 10 M18 14 L24 10 L30 14" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Bloom Bakery</h4>
+                <p class="card-tagline">Artisan Rebrand</p>
+              </div>
+            </div>
+            <!-- Nova Fitness -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="10" y="20" width="4" height="12" rx="2" />
+                    <rect x="34" y="20" width="4" height="12" rx="2" />
+                    <rect x="14" y="24" width="20" height="4" rx="1" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Nova Fitness</h4>
+                <p class="card-tagline">Digital Launch</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="10" y="20" width="4" height="12" rx="2" />
+                    <rect x="34" y="20" width="4" height="12" rx="2" />
+                    <rect x="14" y="24" width="20" height="4" rx="1" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Nova Fitness</h4>
+                <p class="card-tagline">Digital Launch</p>
+              </div>
+            </div>
+            <!-- Greenleaf Organics -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 C16 18, 12 30, 24 40 C36 30, 32 18, 24 8" />
+                    <path d="M24 20 L24 40" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Greenleaf Organics</h4>
+                <p class="card-tagline">Eco Identity</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 C16 18, 12 30, 24 40 C36 30, 32 18, 24 8" />
+                    <path d="M24 20 L24 40" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Greenleaf Organics</h4>
+                <p class="card-tagline">Eco Identity</p>
+              </div>
+            </div>
+            <!-- Lumos Studio -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 L28 18 L38 18 L30 24 L33 34 L24 28 L15 34 L18 24 L10 18 L20 18 Z" fill="currentColor" fill-opacity="0.15" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Lumos Studio</h4>
+                <p class="card-tagline">3D Animated</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 L28 18 L38 18 L30 24 L33 34 L24 28 L15 34 L18 24 L10 18 L20 18 Z" fill="currentColor" fill-opacity="0.15" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Lumos Studio</h4>
+                <p class="card-tagline">3D Animated</p>
+              </div>
+            </div>
+            <!-- Aerve Co. -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <path d="M8 34 C16 18, 24 30, 32 14 C36 22, 40 28, 42 34" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Aerve Co.</h4>
+                <p class="card-tagline">Cinematic Rebuild</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <path d="M8 34 C16 18, 24 30, 32 14 C36 22, 40 28, 42 34" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Aerve Co.</h4>
+                <p class="card-tagline">Cinematic Rebuild</p>
+              </div>
+            </div>
+            <!-- Apex Realty -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 34 L24 12 L40 34" />
+                    <rect x="18" y="26" width="12" height="10" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Apex Realty</h4>
+                <p class="card-tagline">Premium Showcase</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 34 L24 12 L40 34" />
+                    <rect x="18" y="26" width="12" height="10" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Apex Realty</h4>
+                <p class="card-tagline">Premium Showcase</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second set (duplicate for seamless loop) -->
+          <div class="reel-cards">
+            <!-- Bloom Bakery -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 34 C22 14, 40 18, 40 34 C34 28, 22 26, 14 34" />
+                    <path d="M24 18 L24 10 M18 14 L24 10 L30 14" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Bloom Bakery</h4>
+                <p class="card-tagline">Artisan Rebrand</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 34 C22 14, 40 18, 40 34 C34 28, 22 26, 14 34" />
+                    <path d="M24 18 L24 10 M18 14 L24 10 L30 14" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Bloom Bakery</h4>
+                <p class="card-tagline">Artisan Rebrand</p>
+              </div>
+            </div>
+            <!-- Nova Fitness -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="10" y="20" width="4" height="12" rx="2" />
+                    <rect x="34" y="20" width="4" height="12" rx="2" />
+                    <rect x="14" y="24" width="20" height="4" rx="1" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Nova Fitness</h4>
+                <p class="card-tagline">Digital Launch</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="10" y="20" width="4" height="12" rx="2" />
+                    <rect x="34" y="20" width="4" height="12" rx="2" />
+                    <rect x="14" y="24" width="20" height="4" rx="1" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Nova Fitness</h4>
+                <p class="card-tagline">Digital Launch</p>
+              </div>
+            </div>
+            <!-- Greenleaf Organics -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 C16 18, 12 30, 24 40 C36 30, 32 18, 24 8" />
+                    <path d="M24 20 L24 40" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Greenleaf Organics</h4>
+                <p class="card-tagline">Eco Identity</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 C16 18, 12 30, 24 40 C36 30, 32 18, 24 8" />
+                    <path d="M24 20 L24 40" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Greenleaf Organics</h4>
+                <p class="card-tagline">Eco Identity</p>
+              </div>
+            </div>
+            <!-- Lumos Studio -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 L28 18 L38 18 L30 24 L33 34 L24 28 L15 34 L18 24 L10 18 L20 18 Z" fill="currentColor" fill-opacity="0.15" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Lumos Studio</h4>
+                <p class="card-tagline">3D Animated</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 8 L28 18 L38 18 L30 24 L33 34 L24 28 L15 34 L18 24 L10 18 L20 18 Z" fill="currentColor" fill-opacity="0.15" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Lumos Studio</h4>
+                <p class="card-tagline">3D Animated</p>
+              </div>
+            </div>
+            <!-- Aerve Co. -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <path d="M8 34 C16 18, 24 30, 32 14 C36 22, 40 28, 42 34" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Aerve Co.</h4>
+                <p class="card-tagline">Cinematic Rebuild</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <path d="M8 34 C16 18, 24 30, 32 14 C36 22, 40 28, 42 34" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Aerve Co.</h4>
+                <p class="card-tagline">Cinematic Rebuild</p>
+              </div>
+            </div>
+            <!-- Apex Realty -->
+            <div class="reel-card">
+              <div class="card-before">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 34 L24 12 L40 34" />
+                    <rect x="18" y="26" width="12" height="10" />
+                  </svg>
+                </div>
+                <span class="card-label">BEFORE</span>
+                <h4 class="card-name">Apex Realty</h4>
+                <p class="card-tagline">Premium Showcase</p>
+              </div>
+              <div class="card-after">
+                <div class="card-logo">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 34 L24 12 L40 34" />
+                    <rect x="18" y="26" width="12" height="10" />
+                  </svg>
+                </div>
+                <span class="card-label">AFTER</span>
+                <h4 class="card-name">Apex Realty</h4>
+                <p class="card-tagline">Premium Showcase</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PROCESS
+         ========================================================= -->
+    <section class="section section--process" id="process">
+      <div class="section__head">
+        <span class="eyebrow" data-reveal>How we work</span>
+        <h2 class="section__title" data-reveal>
+          A clear process,<br/>
+          <em>no surprises.</em>
+        </h2>
+      </div>
+
+      <ol class="process">
+        <li class="step" data-reveal>
+          <div class="step__num">01</div>
+          <div class="step__body">
+            <h3 class="step__title">Discover</h3>
+            <p class="step__text">
+              We start with a deep-dive call — your business, your audience, your
+              competitors, your numbers. By the end we have a sharp brief and a
+              clear definition of what success looks like.
+            </p>
+            <ul class="step__list">
+              <li>Stakeholder interviews</li>
+              <li>Competitor &amp; market audit</li>
+              <li>Conversion goal mapping</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" data-reveal>
+          <div class="step__num">02</div>
+          <div class="step__body">
+            <h3 class="step__title">Design</h3>
+            <p class="step__text">
+              Wireframes first, then high-fidelity mockups in Figma — every screen,
+              every state. We iterate in tight loops with you, never disappearing
+              into a black box.
+            </p>
+            <ul class="step__list">
+              <li>Sitemap &amp; user flows</li>
+              <li>High-fidelity mockups</li>
+              <li>Motion &amp; interaction specs</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" data-reveal>
+          <div class="step__num">03</div>
+          <div class="step__body">
+            <h3 class="step__title">Develop</h3>
+            <p class="step__text">
+              Clean, hand-written code — no bloat, no page-builder lock-in.
+              Performance budgets enforced from the first commit. Every component
+              is reusable and documented.
+            </p>
+            <ul class="step__list">
+              <li>Hand-crafted, framework-free</li>
+              <li>Performance budgets enforced</li>
+              <li>Accessibility built in</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" data-reveal>
+          <div class="step__num">04</div>
+          <div class="step__body">
+            <h3 class="step__title">Deploy</h3>
+            <p class="step__text">
+              We launch with you — analytics wired up, redirects in place, page
+              speed verified. Then 30 days of dedicated post-launch support.
+            </p>
+            <ul class="step__list">
+              <li>Analytics &amp; tracking setup</li>
+              <li>Page speed &amp; SEO audit</li>
+              <li>30 days of post-launch care</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- =========================================================
+         PRICING
+         ========================================================= -->
+    <section class="section section--pricing" id="pricing">
+      <div class="section__head">
+        <span class="eyebrow" data-reveal>Investment</span>
+        <h2 class="section__title" data-reveal>
+          Value first. Price second.<br/>
+          <em>No hourly traps. Just outcomes.</em>
+        </h2>
+        <p class="section__sub" data-reveal>
+          Three engagement tiers. Every project is bespoke — these are starting
+          points, not off-the-shelf products.
+        </p>
+      </div>
+
+      <div class="plans">
+        <article class="plan" data-reveal data-tilt>
+          <header class="plan__head">
+            <h3 class="plan__name">Starter</h3>
+            <p class="plan__tag">For founders shipping their first serious site.</p>
+          </header>
+          <div class="plan__price">
+            <span class="plan__currency">$</span>
+            <span class="plan__amount">contact</span>
+          </div>
+          <ul class="plan__feats">
+            <li>Up to 5 pages</li>
+            <li>Custom design system</li>
+            <li>Mobile + desktop</li>
+            <li>2 rounds of revisions</li>
+            <li>2-week delivery</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost btn--full" data-magnetic>
+            <span>Get started</span>
+          </a>
+        </article>
+
+        <article class="plan plan--featured" data-reveal data-tilt>
+          <span class="plan__flag">Most chosen</span>
+          <header class="plan__head">
+            <h3 class="plan__name">Studio</h3>
+            <p class="plan__tag">For ambitious brands ready to lead their category.</p>
+          </header>
+          <div class="plan__price">
+            <span class="plan__currency">$</span>
+            <span class="plan__amount">contact</span>
+          </div>
+          <ul class="plan__feats">
+            <li>Up to 12 pages</li>
+            <li>Cinematic motion &amp; micro-interactions</li>
+            <li>Conversion-rate optimization</li>
+            <li>Copywriting guidance</li>
+            <li>4-week delivery</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--full" data-magnetic>
+            <span>Start a project</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <article class="plan" data-reveal data-tilt>
+          <header class="plan__head">
+            <h3 class="plan__name">Enterprise</h3>
+            <p class="plan__tag">For complex platforms, redesigns &amp; ongoing partnership.</p>
+          </header>
+          <div class="plan__price">
+            <span class="plan__amount plan__amount--from">From</span>
+            <span class="plan__currency">$</span>
+            <span class="plan__amount">contact</span>
+          </div>
+          <ul class="plan__feats">
+            <li>Unlimited pages &amp; flows</li>
+            <li>Brand &amp; design system overhaul</li>
+            <li>Quarterly retainer option</li>
+            <li>Dedicated project lead</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost btn--full" data-magnetic>
+            <span>Talk to us</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TESTIMONIALS
+         ========================================================= -->
+    <section class="section section--testimonials">
+      <div class="section__head">
+        <span class="eyebrow" data-reveal>Kind words</span>
+        <h2 class="section__title" data-reveal>
+          Trusted by teams<br/>
+          <em>that ship.</em>
+        </h2>
+      </div>
+
+      <div class="quotes">
+        <figure class="quote" data-reveal data-tilt>
+          <div class="quote__mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="quote__body">
+            Aelloo redesigned our entire platform and our demo-to-close rate went
+            up 38% in the first quarter. The motion work alone made us look like
+            a company three times our size.
+          </blockquote>
+          <figcaption class="quote__attr">
+            <span class="quote__name">Priya Raman</span>
+            <span class="quote__role">Head of Growth · Northwind</span>
+          </figcaption>
+        </figure>
+
+        <figure class="quote" data-reveal data-tilt>
+          <div class="quote__mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="quote__body">
+            We interviewed six studios. Aelloo was the only one who asked about
+            conversion metrics before they asked about colors. Worth every rupee.
+          </blockquote>
+          <figcaption class="quote__attr">
+            <span class="quote__name">Marcus Chen</span>
+            <span class="quote__role">Founder · Lumen Studio</span>
+          </figcaption>
+        </figure>
+
+        <figure class="quote" data-reveal data-tilt>
+          <div class="quote__mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="quote__body">
+            The handoff documentation was immaculate. Six months later, our
+            in-house team still ships faster because of the design system Aelloo
+            built us.
+          </blockquote>
+          <figcaption class="quote__attr">
+            <span class="quote__name">Ananya Iyer</span>
+            <span class="quote__role">VP Product · Orbit Health</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FAQ
+         ========================================================= -->
+    <section class="section section--faq" id="faq">
+      <div class="section__head">
+        <span class="eyebrow" data-reveal>FAQ</span>
+        <h2 class="section__title" data-reveal>
+          The questions<br/>
+          <em>everyone asks.</em>
+        </h2>
+      </div>
+
+      <div class="faqs">
+        <details class="faq" data-reveal>
+          <summary>
+            <span>How long does a typical project take?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__body">
+            <p>
+              Starter sites ship in 2 weeks. Studio projects in 4. Enterprise
+              engagements run 6–10 weeks depending on scope. We share a detailed
+              timeline during the proposal stage — no surprises.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq" data-reveal>
+          <summary>
+            <span>Do you work with clients outside India?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__body">
+            <p>
+              Yes — about 60% of our work is international. We're timezone-flexible
+              and run async-first with overlap hours for live calls.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq" data-reveal>
+          <summary>
+            <span>What's your tech stack?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__body">
+            <p>
+              Hand-crafted HTML, CSS and vanilla JS by default — fastest possible
+              sites, zero bloat. For larger platforms we work in Next.js or Astro.
+              No WordPress, no page builders, no locked-in CMS.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq" data-reveal>
+          <summary>
+            <span>Do you only build, or do you also help with strategy?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__body">
+            <p>
+              Both, and we strongly recommend strategy-first engagements. The
+              websites that convert best are the ones where positioning, messaging
+              and design were built together — not stitched after.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq" data-reveal>
+          <summary>
+            <span>What happens after launch?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__body">
+            <p>
+              Every project includes 30 days of post-launch care. After that, most
+              clients move to a monthly retainer for ongoing optimization, A/B
+              testing and small enhancements.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq" data-reveal>
+          <summary>
+            <span>Can I see more work before I commit?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__body">
+            <p>
+              Of course — we'll send a private case-study deck tailored to your
+              industry on our intro call. Most prospects find one specific project
+              that maps closely to what they need.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CONTACT — FIXED (Standard HTML submit, no JavaScript)
+         ========================================================= -->
+    <section class="section section--contact" id="contact">
+      <div class="contact">
+        <div class="contact__left" data-reveal>
+          <span class="eyebrow eyebrow--light">Start a project</span>
+          <h2 class="contact__title">
+            Got an<br/>
+            <em>ambitious</em> idea?<br/>
+            Let's talk.
+          </h2>
+          <p class="contact__sub">
+            Tell us a little about your project — what you're building, who it's
+            for, and roughly when you'd like to launch. We'll come back within
+            one business day.
+          </p>
+
+          <ul class="contact__list">
+            <li>
+              <span class="contact__list-label">Email</span>
+              <a href="mailto:hello@aelloo.in" class="contact__list-link" data-magnetic>aellooinstudio@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact__list-label">Studio</span>
+              <span class="contact__list-link">Bengaluru · Remote-first</span>
+            </li>
+            <li>
+              <span class="contact__list-label">Currently</span>
+              <span class="contact__list-link contact__list-link--live">
+                <span class="contact__list-dot"></span>
+                Book projects now 
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ===== CONTACT FORM — Netlify-ready (Standard HTML submit) ===== -->
+        <form
+          class="contact__form"
+          data-reveal
+          data-parallax="0.04"
+          method="POST"
+          data-netlify="true"
+          name="contact"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="f-company">Company / project</label>
+            <input id="f-company" name="company" type="text" />
+          </div>
+          <div class="field field--full">
+            <label for="f-budget">Budget range</label>
+            <select id="f-budget" name="budget">
+              <option>you consult me</option>
+              <option>$1k – $5k</option>
+              <option>$5k – $10k</option>
+              <option>$10k – $20k</option>
+              <option>$20k – $40k</option>
+              <option>$40k+</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="f-msg">Tell us about it</label>
+            <textarea
+              id="f-msg"
+              name="message"
+              rows="4"
+              placeholder="What are you building, and what does success look like?"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full" data-magnetic>
+            <span>Send brief</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <p class="contact__note">We reply within one business day. No sales pressure, ever.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="footer__logo">Aelloo<span>.</span>in</span>
+          <p>Cinematic websites for ambitious brands.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <span class="footer__col-h">Studio</span>
+            <a href="#difference">Difference</a>
+            <a href="#showreel">Showreel</a>
+            <a href="#process">Process</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-h">Connect</span>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aellooinstudio@gmail.com&su=New%20Aelloo.in%20Project%20Inquiry">aellooinstudio@gmail.com</a>
+            <a href="https://www.instagram.com/aelloo.in_studio/#">Instagram</a>
+            <a href="#">Twitter / X</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">---</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__base">
+        <span>© 2026 Aelloo Studio. All rights reserved.</span>
+        <span>Hand-crafted in Bengaluru · Made with intent.</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================================================
+       Nature-journey scene is drawn entirely in Canvas 2D by
+       script.js — no external 3D library or image assets, so
+       nothing here can 404 or block the page from loading.
+       ========================================================= -->
+  <script src="script.js" defer></script>
+</body>
+</html>
